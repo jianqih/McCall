@@ -1,0 +1,168 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage{graphicx,hyperref,amsmath,natbib,bm,url}
+\usepackage[utf8]{inputenc} % include umlaute
+
+% -------- Define new color ------------------------------
+\usepackage{color}
+\definecolor{mygrey}{rgb}{0.85,0.85,0.85} % make grey for the table
+%   }}
+\definecolor{darkblue}{rgb}{0.055,0.094,0.7}
+\definecolor{darkred}{rgb}{0.6,0,0}
+
+% --------------------------------------------------------
+\usepackage{microtype,todonotes}
+\usepackage[australian]{babel} % change date to to European format
+\usepackage[a4paper,text={14.5cm, 25.2cm},centering]{geometry} % Change page size
+\setlength{\parskip}{1.2ex} % show new paragraphs with a space between lines
+\setlength{\parindent}{0em} % get rid of indentation for new paragraph
+\clubpenalty = 10000 % prevent "orphans" 
+\widowpenalty = 10000 % prevent "widows"
+
+\hypersetup{pdfpagemode=UseNone} % un-comment this if you don't want to show bookmarks open when opening the pdf
+
+\usepackage{mathpazo} % change font to something close to Palatino
+
+\usepackage{longtable, booktabs, tabularx} % for nice tables
+\usepackage{caption,fixltx2e}  % for nice tables
+\usepackage[flushleft]{threeparttable}  % for nice tables
+
+\newcommand*{\myalign}[2]{\multicolumn{1}{#1}{#2}} % define new command so that we can change alignment by hand in rows
+ 
+% -------- For use in the bibliography -------------------
+\usepackage{multicol}
+\usepackage{etoolbox}
+\usepackage{relsize}
+\setlength{\columnsep}{1cm} % change column separation for multi-columns
+% \patchcmd{\thebibliography}
+%   {\list}
+%   {\begin{multicols}{2}\smaller\list}
+%   {}
+%   {}
+% \appto{\endthebibliography}{\end{multicols}}
+% % --------------------------------------------------------
+
+
+\usepackage[onehalfspacing]{setspace} % Line spacing
+
+\usepackage[marginal]{footmisc} % footnotes not indented
+\setlength{\footnotemargin}{0.2cm} % set margin for footnotes (so that the number doesn't stick out) 
+
+\usepackage{pdflscape} % for landscape figures
+
+\usepackage[capposition=top]{floatrow} % For notes below figure
+
+% -------- Use the following two lines for making lines grey in tables -------------------
+\usepackage{color, colortbl}
+\usepackage{multirow}
+% ----------------------------------------------------------------------------------------
+\newtheorem{defn}{Definition}[section]
+\newtheorem{reg}{Rule}[section]
+\newtheorem{exer}{Exercise}[section]
+\newtheorem{note}{Note}[section]
+\newtheorem{expl}{Example}[section]
+\newtheorem{pro}{properties}[section]
+\newtheorem{asm}{Assumption}
+\newtheorem{them}{Theorem}[section]
+\newtheorem{rmk}{Remark}[section]
+\newtheorem{coro}{Corollary}[section]
+\newtheorem{lem}{Lemma}[section]
+\newtheorem{pros}{Proposition}[section]
+
+
+\usepackage{dsfont}
+% \tcbset{highlight math style={enhanced,
+%     colframe=red!60!black,colback=yellow!50!white,arc=4pt,boxrule=1pt,
+\hypersetup{colorlinks=true,           % put a box around links
+  linkbordercolor = {1 0 0}, % the box will be red
+  pdfborder = {1 0 0},       % 
+  % bookmarks=true,            % PDF will contain an index on the RHS
+  urlcolor=darkred,
+  citecolor=darkblue,
+  linkcolor=darkred
+}
+% The following defines a footnote without a marker
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% -------- Customize page numbering ----------------------------
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+ \pagestyle{fancy}
+\fancyhf{} % get rid of header and footer
+ \cfoot{ \footnotesize{ \thepage } }
+
+% \rhead{\small{\textit{Jianqi Huang}}}
+% \lhead{\small{\textit{Heterogeneous Agents'n OLG model}}}
+\renewcommand{\headrulewidth}{0pt} % turn off header line
+% --------------------------------------------------------------
+
+\begin{document}
+\section{Model}\label{sec:model}
+Motivation: what determines the level of employment and unemployment in the economy. 
+Textbook: labor supply, labor demand, and unemployment as ``leisure'' .
+Alternative: labor market frictions. 
+
+Further question: how should labor market frictions be modeled?
+Search and matching: costly process of workers finding the right jobs.
+
+\paragraph{McCall Partial Equilibrium Search Model}
+\begin{itemize}
+    \item The simplest model of search frictions.
+    \item Problem of an individual getting draws from a given wage distribution.
+    \item Decision: which jobs to accept and which to reject. 
+    \item Sequential search typically more reasonable.
+\end{itemize}
+\paragraph{Environment}
+Risk neutral individual, discrete time. Linear preferences: $$ \sum_{t=0}^\infty \beta^t c_t $$
+Start as unemployed, with consumption equal to $b$. Wage offer $w$ drawn from a distribution $F(w)$. If she accepts, she will be employed at that job forever. Net Present Value of accepting a wage offer $w$ is $w/(1-\beta)$ since $\frac{w}{1-\beta} = w + \beta w +\beta^2 w + \cdots$.
+
+We could use probability to describe decision rule $$ a_t : \mathcal{W}\to [0,1] $$ where $\mathcal{W}$ is the set of wage offers.
+Dynamic programming problem: $$ V(w) = \max \left\{ \frac{w}{1-\beta}, b + \beta \int V(w') \mathrm{d}F(w') \right\} $$ 
+
+Reservation wage given by $$ \frac{R}{1-\beta} =  b+\int_{\mathcal{W}} V(w')\mathrm{d}F(w') $$
+For all $w\geq R$, $V(w) = \frac{w}{1-\beta}$.
+Therefore, $$ \int_{\mathcal{W}}V(w)\mathrm{d}F(w) = \frac{R F(R)}{1-\beta} +\int_{w\geq R}\frac{w}{1-\beta} \mathrm{d}F(w) $$
+Combining with reservation wage equation, $$ \frac{R}{1-\beta} = b +\beta \left[\frac{R F(R)}{1-\beta} +\int_{w\geq R} \frac{w}{1-\beta}\mathrm{d}F(w)\right] $$
+Rewriting, $$ \int_{w<R} \frac{R}{1-\beta} \mathrm{d}F(w) + \int_{w\geq R}\frac{R}{1-\beta}\mathrm{d}F(w) = b +\beta \left[\frac{R F(R)}{1-\beta} +\int_{w\geq R} \frac{w}{1-\beta}\mathrm{d}F(w)\right] $$
+Subtracting $\beta R \int_{w\geq R} \mathrm{d}F(w)/(1-\beta)+\beta R \int_{w< R} \mathrm{d}F(w)/(1-\beta)$ from both sides,
+$$ \begin{aligned}
+    \int_{w<R} \frac{R}{1-\beta} \mathrm{d}F(w) + \int_{w\geq R}\frac{R}{1-\beta}\mathrm{d}F(w)-\beta R \int_{w\geq R} \mathrm{d}F(w)/(1-\beta)+\beta R \int_{w< R} \mathrm{d}F(w)/(1-\beta)\\ =  b+\beta\left[\int_{w\geq R}\frac{w-R}{1-\beta}d F(w)\right] 
+\end{aligned}$$
+Collecting terms, we obtain
+\begin{equation}
+    R- b = \frac{\beta}{1-\beta}\left[\int_{w\geq R}(w-R)d F(w)\right] \label{eq:reserv}
+\end{equation}
+The LHS is the cost of foregoing the current job. 
+The RHS is the expected benefit of one more search.
+
+Define the $g(R)$ as $$ g(R)\equiv \frac{\beta}{1-\beta}\left[\int_{w\geq R}(w-R)\mathrm{d}F(w)\right] $$
+First order derivative of $g(R)$ is $$ g'(R) = -\frac{\beta}{1-\beta}(R-R)f(R)-\frac{\beta}{1-\beta}\left[\int_{w\geq R}dF(w)\right]= -\frac{\beta}{1-\beta}[1-F(R)]<0 $$ We have the unique solution to Eq~\eqref{eq:reserv}. 
+Moreover, by the implicit function theorem, $$ \frac{dR}{db}= \frac{1}{1-g'(R)}>0 $$
+
+
+% \paragraph{Wage Dispersion and Search}
+% Start with eq~\eqref{eq:reserv}, $$ R-b = \frac{\beta}{1-\beta}\left[\int_{w\geq R}(w-R)\mathrm{d}F(w)\right] $$
+% Rewrite this as 
+% \begin{equation}
+%     \begin{aligned}
+%         R -b &= \frac{\beta}{1-\beta}\left[\int_{w\geq R}(w-R)\mathrm{d}F(w)\right]+\frac{\beta}{1-\beta}\left[\int_{w\leq R}(w-R)\mathrm{d}F(w)\right] \\ &-\frac{\beta}{1-\beta}\left[\int_{w\leq R}(w-R)\mathrm{d}F(w)\right],\\
+%         &= \frac{\beta}{1-\beta}\left(\int_{\mathcal{W}}w dF(w)-R\right)-\frac{\beta}{1-\beta}\left[\int_{w\leq R}(w-R)d F(w)\right], 
+%     \end{aligned} \label{eq:reserv2}
+% \end{equation}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
