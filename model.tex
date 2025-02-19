@@ -46,7 +46,7 @@
 \usepackage[onehalfspacing]{setspace} % Line spacing
 
 \usepackage[marginal]{footmisc} % footnotes not indented
-\setlength{\footnotemargin}{0.2cm} % set margin for footnotes (so that the number doesn't stick out) 
+\setlength{\footnotemargin}{0.1cm} % set margin for footnotes (so that the number doesn't stick out) 
 
 \usepackage{pdflscape} % for landscape figures
 
@@ -103,11 +103,10 @@
 
 \begin{document}
 \section{Model}\label{sec:model}
-Motivation: what determines the level of employment and unemployment in the economy. 
-Textbook: labor supply, labor demand, and unemployment as ``leisure'' .
-Alternative: labor market frictions. 
-
-Further question: how should labor market frictions be modeled?
+\textbf{Motivation}: what determines the level of employment and unemployment in the economy. \\
+\textbf{Textbook:} labor supply, labor demand, and unemployment as ``leisure'' .
+Alternative: labor market frictions. \\ 
+\textbf{Further question:} how should labor market frictions be modeled?
 Search and matching: costly process of workers finding the right jobs.
 
 \paragraph{McCall Partial Equilibrium Search Model}
@@ -119,11 +118,10 @@ Search and matching: costly process of workers finding the right jobs.
 \end{itemize}
 \paragraph{Environment}
 Risk neutral individual, discrete time. Linear preferences: $$ \sum_{t=0}^\infty \beta^t c_t $$
-Start as unemployed, with consumption equal to $b$. Wage offer $w$ drawn from a distribution $F(w)$. If she accepts, she will be employed at that job forever. Net Present Value of accepting a wage offer $w$ is $w/(1-\beta)$ since $\frac{w}{1-\beta} = w + \beta w +\beta^2 w + \cdots$.
-
+Start as unemployed, with consumption equal to $b$. Wage offer $w$ drawn from a distribution $F(w)$. If she accepts, she will be employed at that job forever. Net Present Value of accepting a wage offer $w$ is $w/(1-\beta)$ since $$\frac{w}{1-\beta} = w + \beta w +\beta^2 w + \cdots.$$
 We could use probability to describe decision rule $$ a_t : \mathcal{W}\to [0,1] $$ where $\mathcal{W}$ is the set of wage offers.
 Dynamic programming problem: $$ V(w) = \max \left\{ \frac{w}{1-\beta}, b + \beta \int V(w') \mathrm{d}F(w') \right\} $$ 
-
+(Indifference condition)
 Reservation wage given by $$ \frac{R}{1-\beta} =  b+\int_{\mathcal{W}} V(w')\mathrm{d}F(w') $$
 For all $w\geq R$, $V(w) = \frac{w}{1-\beta}$.
 Therefore, $$ \int_{\mathcal{W}}V(w)\mathrm{d}F(w) = \frac{R F(R)}{1-\beta} +\int_{w\geq R}\frac{w}{1-\beta} \mathrm{d}F(w) $$
@@ -155,7 +153,138 @@ Moreover, by the implicit function theorem, $$ \frac{dR}{db}= \frac{1}{1-g'(R)}>
 %     \end{aligned} \label{eq:reserv2}
 % \end{equation}
 
+\subsection{Continuous time model with layoff}
+The value function 
+\begin{equation}
+  U = b \Delta + e^{-r\Delta}[(1-e^{-f \Delta }) \int \max \{ V(w),U\} \mathrm{d}F(w) + e^{-f \Delta }U\label{eq:val}
+\end{equation}
+and 
+\begin{equation}
+  V(w) = \frac{w}{r} + e^{-r\Delta} [e^{s \Delta }V(w) + (1-e^{s \Delta })U] \label{eq:val2}
+\end{equation}
+Take the continuous time limit $\Delta \to 0$:
+\begin{equation}
+  r U = b + f \int\max \{V(w)- U,0\}\mathrm{d}F(w) \quad \text{and } r V(w) = w + s[V(w)-U] \label{eq:val3}
+\end{equation}
+Combining these two equations, we have
+\begin{equation}
+  r U = b + f \int \max \{\frac{w+sU}{r+s}-U,0\}\mathrm{d}F(w) \label{eq:val4}
+\end{equation}
+The reservation wage:
+\begin{equation}
+  \frac{R+ sU}{r+s} = U
+\end{equation}
+Combining the previous two equations to eliminate $U$, we have
+\begin{equation}
+  R - b = f \int_{w\geq R} \frac{w-R}{r+s} \mathrm{d}F(w)\label{eq:reserv}
+\end{equation}
+\textbf{LHS}: benefit of accepting a wage offer $R$. 
+\textbf{RHS}: cost of accepting an offer $R$ = foregoing future better offer. 
+At the optimum, two should be equated. 
 
+
+\subsection{Mean-Preserving Spread}
+Rewrite \begin{equation}
+  R - b = f \int_{w\geq R} \frac{w-R}{r+s} \mathrm{d}F(w) - f \int_{w\leq R} \frac{w-R}{r+s}\mathrm{d}F(w) 
+\end{equation}
+Applying intergration by parts,
+\begin{equation}
+  \int_{w\leq R} w \mathrm{d}F(w) = R F(R) - \int_{w\geq R} F(w)\mathrm{d}w 
+\end{equation}
+Plugging back, 
+\begin{equation}
+  R - b = f \frac{w-R}{r+s} \mathrm{d}F(w) + f \frac{1}{r+s} \int_{w\leq R} F(w)\mathrm{d}w 
+\end{equation}
+We say distribution $\tilde{F}$ is a mean-preserving spread of $F$ \textbf{iff} $\mathbb{E}_{\tilde{F}}[w] = \mathbb{E}[w]$ and $\int^{\bar{w}} \tilde{F}(w)\mathrm{d}w > \int^{\bar{w}} F(w)\mathrm{d}w$ for all $\bar{w}$.  
+It says that the mean is the same but the variance is higher. 
+
+Reservation wage is now 
+\begin{equation}
+  \frac{r+s + f}{f}R - \frac{r+s}{f}b = \mathbb{E}[w] + \underbrace{\int^{R}F(w)\mathrm{d}w }_{\equiv h(R)} 
+\end{equation}
+note that
+\begin{equation}
+  h(0) = 0 , h'(R) = F(R)\in [0,1]
+\end{equation}
+when $F$ shift from $F$ to $\tilde{F}$, the reservation wage will increase. 
+It is very similar to the American option, which says that accept the job offer only if the wage is high enough (``option value''). 
+
+Therefore, you only care about the right tail of the wage distribution. \\ 
+More variance/risk $\to$ more chances of a very good wage offer $\to $ search more. 
+
+The rate at which workers transition from unemployed to employed is 
+\begin{equation}
+  UE = f(1-F(R))
+\end{equation}
+If $f$ increases,
+\begin{equation}
+  \frac{\mathrm{d}\ln UE }{\mathrm{d} \ln f} = 1- \frac{F'(R)R}{1-F(R)}\frac{\mathrm{d} \ln R }{\mathrm{d} \ln f}
+\end{equation}
+Under what condition $\frac{\mathrm{d}\ln UE }{\mathrm{d}\ln f } =0 $. 
+consider that case: wage distribution follows Pareto distribution, $F(w) = 1-(w/\underline{w})^{-\alpha}$ and outside option $b$ is proportional to the average wage in the economy,
+\begin{equation}
+  b = \bar{b} E[w\mid w\geq R] = \frac{\bar{b}}{\alpha-1}R
+\end{equation}
+Plugging the condition into the equation~\eqref{eq:reserv}, we have
+\begin{equation}
+  R - b = \frac{f}{r+s} \frac{1}{\alpha-1} \underline{w}^\alpha (R)^{1-\alpha}
+\end{equation}
+Solving for $R$: 
+\begin{equation}
+  R = \left(\frac{f}{r+s}\frac{1}{\alpha-1}\underline{w}^\alpha\right)^{\frac{1}{\alpha}}
+\end{equation}
+The UE rate is 
+\begin{equation}
+  UE = (\alpha-1)(r+s)(1-\bar{b} \frac{\alpha}{\alpha-1})
+\end{equation}
+
+\paragraph{Diamond Paradox}
+For all $\beta<1$ the unique equilibrium in the above economy is $R=0$, and all workers accept the first wage offer. 
+
+\textit{Implication}: starting from an allocation where all firm offer $R$, any firm can deviate and offer a wage $R-\varepsilon$ and increase its profits. This proves that no wage $R>0$ can be an equilibrium. 
+
+Solutions of Diamond Paradox:
+\begin{itemize}
+  \item Assume $F(w)$ is not the distribution of wages, but the distribution of ``fruits'' exogenously offered by ``trees''.
+  \item Introduce other dimensions of heterogeneity
+  \item Modify the wage determination assumptions
+\end{itemize}
+
+\paragraph{DMP model}
+Matching function: $x(U,V)$ is CRS. 
+$$ xL = x(uL,vL) \Rightarrow x= x(u,v) $$
+Under this assumption, we can express everything as a function of the \textit{tightness} of the labor market. 
+$$ q(\theta) = \frac{x}{v} = x\left(\frac{u}{v},1\right) $$ 
+where $\theta$ is the tightness of the labor market. 
+\begin{itemize}
+  \item $q(\theta)$ is the job filling rate.
+  \item $1/q(\theta)$ is the expected duration of unemployment.
+  \item $\theta q(\theta)$ is the job finding rate for the unemployed.
+  \item Job creation is $u \theta q(\theta )L$.
+  \item Job destruction: exogenously given by $\delta (1-u)$.
+\end{itemize}
+$$ \delta(1-u) = u\theta q(\theta) $$
+Therefore, $$ u = \frac{\delta}{\delta + \theta q(\theta)} $$
+is called Beveridge curve. 
+Equilibrium: unemployed flow equals to the job destruction flow.
+First, we need to use Bellman equation of unemployed worker: 
+$$ r U = b + p(\theta)E[W(w)-U] $$
+Employed flow value: $$ r W(w) = w +\delta [U-W(w)] $$
+We could solve these equations. However, we cannot pin down the wage function since we have 3 unknowns. 
+Introduce the wage bargaining assumption: Nash bargaining. Before that, we need to consider the value function of firms. Assume each firm only has one position. Vacant flow value:
+$$ r V = -\kappa + q(\theta)E[J(w)-V] $$
+Matched flow value:
+$$ r J(w) = (p-w) + \delta [V-J(w)] $$
+Free entry equilibrium condition: $$ rV=0 \Rightarrow \frac{\kappa }{E[J(w)]} = q(\theta)$$
+This is just a market clearing condition! 
+
+Steady State: 
+\begin{align}
+  u &= \frac{s}{s+q\theta(q)}\\ 
+  0 &= A f(k) - (r+\delta)k - w -\frac{(r+s)}{q(\theta)}\gamma_0 \\ 
+  w &= (1-\beta )z + \beta [Af(k)-(r+\delta)k+\theta \gamma_0]\\
+  Af'(k) &= r+\delta
+\end{align}
 
 
 

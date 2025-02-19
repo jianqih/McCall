@@ -25,6 +25,14 @@ end
 
 
 begin
+    s = 0.05;
+    r = 0.05;
+    # to be add the parameters.
+    LHS = w_vec - c;
+    RHS = (w_vec+ s*U)/(r+s)
+end
+
+begin
     using LinearAlgebra
     function update_V(V, w_vec, c, β)
         V_new = fill(0.0, nw+1)

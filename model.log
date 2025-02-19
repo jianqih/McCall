@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.4)  13 OCT 2024 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.6.4)  10 NOV 2024 16:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -794,7 +794,11 @@ File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
 File: l3backend-pdftex.def 2024-02-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count364
 \l__pdf_internal_box=\box122
-) (./model.aux)
+) (./model.aux
+
+LaTeX Warning: Label `eq:reserv' multiply defined.
+
+)
 \openout1 = `model.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 104.
@@ -913,25 +917,25 @@ Package: fr-longtable 2007/11/28 v0.1b (beta) floatrow: additions for longtable
 \flrow@LT@prelastfoot=\box125
 \c@FBLTpage=\count371
 )
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 115.
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 114.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-LaTeX Font Info:    Trying to load font information for OML+zplm on input line 121.
+LaTeX Font Info:    Trying to load font information for OML+zplm on input line 120.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omlzplm.fd
 File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 121.
+LaTeX Font Info:    Trying to load font information for OMS+zplm on input line 120.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omszplm.fd
 File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
 )
-LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 121.
+LaTeX Font Info:    Trying to load font information for OMX+zplm on input line 120.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/omxzplm.fd
 File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 121.
+LaTeX Font Info:    Trying to load font information for OT1+zplm on input line 120.
  (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ot1zplm.fd
 File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
 )
@@ -942,14 +946,27 @@ Package microtype Info: Loading generic protrusion settings for font family
  [1
 
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}]
-Overfull \hbox (28.43306pt too wide) detected at line 135
+Overfull \hbox (28.43306pt too wide) detected at line 133
 [][]
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 144.
+Package xcolor Warning: Incompatible color definition on input line 142.
 
-[2] 
+[2]
+LaTeX Font Info:    Trying to load font information for U+fplmbb on input line 198.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/psnfss/ufplmbb.fd
+File: ufplmbb.fd 2003/10/30 Fontinst v1.914 font definitions for U/fplmbb.
+)
+Overfull \hbox (14.28664pt too wide) in paragraph at lines 197--200
+\OT1/ppl/m/n/10.95 (-20) We say dis-tri-bu-tion $[]$ is a mean-preserving spread of $\OML/zplm/m/it/10.95 F$ \OT1/ppl/b/n/10.95 (-20) iff $\U/fplmbb/m/n/10.95 E[]\OT1/zplm/m/n/10.95 [\OML/zplm/m/it/10.95 w\OT1/zplm/m/n/10.95 ] = \U/fplmbb/m/n/10.95 E\OT1/zplm/m/n/10.95 [\OML/zplm/m/it/10.95 w\OT1/zplm/m/n/10.95 ]$ \OT1/ppl/m/n/10.95 (-20) and $[][] []\OT1/zplm/m/n/10.95 (\OML/zplm/m/it/10.95 w\OT1/zplm/m/n/10.95 )\OT1/ppl/m/n/10.95 (-20) d\OML/zplm/m/it/10.95 w >
+ []
+
+[3]
+
+Package xcolor Warning: Incompatible color definition on input line 228.
+
+[4] [5] 
 enddocument/afterlastpage: lastpage setting LastPage.
 (./model.aux)
  ***********
@@ -958,24 +975,24 @@ L3 programming layer <2024-02-20>
  ***********
 
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `model.out' has not changed.
-(rerunfilecheck)             Checksum: 0ECC33909C6AA06652DF667AA9DDE3BA;68.
+(rerunfilecheck)             Checksum: 73C9FEF262BC96EC8F61F81DB1A670D1;472.
  ) 
 Here is how much of TeX's memory you used:
- 27524 strings out of 474116
- 506203 string characters out of 5743683
+ 27643 strings out of 474116
+ 507675 string characters out of 5743683
  1939187 words of memory out of 5000000
- 49307 multiletter control sequences out of 15000+600000
- 579088 words of font info for 121 fonts, out of 8000000 for 9000
+ 49335 multiletter control sequences out of 15000+600000
+ 585303 words of font info for 164 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,117p,998b,467s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on model.pdf (2 pages, 95076 bytes).
+ 99i,12n,117p,998b,545s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmbb.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on model.pdf (5 pages, 123237 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
- 31765 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 131 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 44069 words of extra memory for PDF output out of 51595 (max. 10000000)
 
